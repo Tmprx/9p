@@ -20,9 +20,11 @@ $products = $pdo->query("SELECT * FROM products")->fetchAll(PDO::FETCH_ASSOC);
 <?php foreach ($products as $product): ?>
 <span> id = <?= $product['id'] ?></span>
 <span> name = <?= $product['name'] ?></span>
+<span> price = <?= $product['price'] ?></span>
 <span> article = <?= $product['article'] ?></span>
 <br><br>
 <?php endforeach; ?>
 <a href="/product/create.php" id="create">Добавить</a>
+<a href="/index.php">Назад</a>
 </body>
 </html>

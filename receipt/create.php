@@ -19,15 +19,16 @@ $products = $pdo->query("SELECT * FROM products");
 <body>
 <h1>Создать поступление</h1>
 <form action="/receipt/actions/store.php" method="post">
-    <input type="datetime-local" name="datetime" id="datetime" placeholder="datetime" required>
+    <input type="datetime-local" name="datetime" id="datetime" placeholder="datetime">
     <select name="product" id="product" required>
         <?php foreach ($products as $product): ?>
         <option value="<?= $product['id'] ?>"><?= $product['name'] ?></option>
         <?php endforeach; ?>
     </select>
     <input type="number" name="quantity" id="quantity" placeholder="quantity" required>
-    <input type="submit" id="btn">
+    <input type="submit" id="submit">
 </form>
+<a href="/receipt/index.php">Назад</a>
 
 </body>
 </html>

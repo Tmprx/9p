@@ -25,5 +25,6 @@ $receipts= $pdo->query("SELECT receipts.*, products.name as products_name FROM r
 <br><br>
 <?php endforeach; ?>
 <a href="/receipt/create.php" id="create">Создать поступление</a>
+<a href="/index.php">Назад</a>
 </body>
 </html>
