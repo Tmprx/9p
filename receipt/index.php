@@ -2,8 +2,9 @@
 /** @var PDO $pdo */
 $pdo = require $_SERVER['DOCUMENT_ROOT'] . '/db.php';
 
-$receipts= $pdo->query("SELECT receipts.*, products.name as products_name FROM receipts LEFT JOIN products ON product_id = products.id")->fetchAll(PDO::FETCH_ASSOC);
+$receipts = $pdo->query("SELECT receipts.*, products.name as products_name FROM receipts LEFT JOIN products ON product_id = products.id")->fetchAll(PDO::FETCH_ASSOC);
 
+$products_count = $pdo->query("SELECT products.name as name, SUM(receipts.quantity) as product_count FROM receipts LEFT JOIN products ON product_id = products.id GROUP BY receipts.product_id")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!doctype html>
@@ -17,6 +18,24 @@ $receipts= $pdo->query("SELECT receipts.*, products.name as products_name FROM r
 </head>
 <body>
 <h1>Просмотр поступлений</h1>
+
+<h2>Общие поступлления</h2>
+
+<table>
+    <tr>
+        <th>Товар</th>
+        <th>Количество</th>
+    </tr>
+    <?php foreach ($products_count as $product_count): ?>
+    <tr>
+        <td><?= $product_count['name'] ?></td>
+        <td><?= $product_count['product_count'] ?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+
+<h2>Все поступления</h2>
+
 <?php foreach ($receipts as $receipt): ?>
 <span> id = <?= $receipt['id'] ?></span>
 <span> name = <?= $receipt['datetime'] ?></span>

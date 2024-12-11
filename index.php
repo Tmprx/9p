@@ -10,6 +10,6 @@
 <body>
     <h1>Товары и приемка</h1>
     <a href="/product/index.php">Открыть список товаров</a>
-    <a href="/receipt/index.php">Сделать приемку</a>
+    <a href="/receipt/index.php">Просмотр поступлений</a>
 </body>
 </html>

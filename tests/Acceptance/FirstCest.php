@@ -29,7 +29,7 @@ class FirstCest
 
     public function TestAddReceipt(AcceptanceTester $I)
     {
-        $I->click('Сделать приемку');
+        $I->click('Просмотр поступлений');
         $I->click('Создать поступление');
         $I->selectOption('product' , 'Клавиатура');
         $I->fillField('quantity' , '21');
